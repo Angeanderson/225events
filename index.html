@@ -7,6 +7,7 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <script src="https://kit.fontawesome.com/your-fontawesome-key.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
 <!-- Dans le <head> -->
 <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 
@@ -210,7 +211,7 @@ a:focus-visible::after {
 <section id="accueil" class="relative h-screen flex items-center justify-center text-center text-white overflow-hidden">
   <div class="absolute w-full h-full">
     <div class="absolute w-full h-full animate-fade-carousel" id="bannerCarousel">
-      <img src="https://images.pexels.com/photos/167636/pexels-photo-167636.jpeg" class="absolute w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
+      <img src="https://images.pexels.com/photos/167636/pexels-photo-167636.jpeg" class="absolute w-full h-full object-cover opacity-100 transition-opacity duration-1000" />
       <img src="https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg" class="absolute w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
       <img src="https://images.pexels.com/photos/2747448/pexels-photo-2747448.jpeg" class="absolute w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
     </div>
@@ -238,8 +239,11 @@ a:focus-visible::after {
         <!-- Bloc 1: Notre Vision -->
         <div  data-aos="flip-up" data-aos-duration="1000" data-aos-once="false">
           <button onclick="toggle('vision')" class="flex items-center space-x-4 group">
-            <span class="text-2xl">💡</span>
-            <span class="text-lg font-semibold text-black-800 group-hover:underline">NOTRE VISION</span>
+            <span class="text-2xl" style="color: #030323;">
+              <i class="fas fa-lightbulb"></i>
+            </span>
+            
+            <span class="text-lg font-semibold text-black-800">NOTRE VISION</span>
           </button>
           <div id="vision" class="hidden mt-2 pl-10 text-gray-600">
             Être un leader incontournable de l’événementiel en Afrique et au-delà.
@@ -249,8 +253,11 @@ a:focus-visible::after {
         <!-- Bloc 2: Notre But -->
         <div  data-aos="fade-up-left" data-aos-duration="1000" data-aos-once="false">
           <button onclick="toggle('but')" class="flex items-center space-x-4 group">
-            <span class="text-2xl">📦</span>
-            <span class="text-lg font-semibold text-black-800 group-hover:underline">NOTRE BUT</span>
+            <span class="text-2xl" style="color: #04041e;">
+              <i class="fas fa-box"></i>
+            </span>
+            
+            <span class="text-lg font-semibold text-black-800 ">NOTRE BUT</span>
           </button>
           <div id="but" class="hidden mt-2 pl-10 text-gray-600">
             Répondre aux attentes de nos clients avec créativité et efficacité.
@@ -260,8 +267,11 @@ a:focus-visible::after {
         <!-- Bloc 3: Notre Mission -->
         <div data-aos="fade-left" data-aos-duration="1000" data-aos-once="false">
           <button onclick="toggle('mission')" class="flex items-center space-x-4 group">
-            <span class="text-2xl">📈</span>
-            <span class="text-lg font-semibold text-black-800 group-hover:underline">NOTRE MISSION</span>
+            <span class="text-2xl" style="color: #02021f;">
+              <i class="fas fa-chart-line"></i>
+            </span>
+            
+            <span class="text-lg font-semibold text-black-800 ">NOTRE MISSION</span>
           </button>
           <div id="mission" class="hidden mt-2 pl-10 text-gray-600">
             Créer des moments exceptionnels et offrir des solutions stratégiques pour propulser nos clients vers de nouveaux sommets.
