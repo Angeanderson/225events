@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>225 Events - Communication & Logistique</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/your-fontawesome-key.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- Dans le <head> -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+<!-- Font Awesome pour les icônes -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+  <style>
+    /* style global pour tous les liens */
+a {
+  color: inherit;          /* garde la couleur héritée du parent  */
+  text-decoration: none;   /* enlève l’underline natif            */
+  position: relative;      /* nécessaire pour positionner le ::after */
+}
+
+/* pseudo-élément qui servira de ligne animée */
+a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;            /* distance sous le texte (ajuste si besoin) */
+  width: 100%;
+  height: 2px;             /* épaisseur de la ligne                     */
+  background-color: currentColor; /* même couleur que le texte          */
+
+  /* Animation : caché au repos */
+  transform: scaleX(0);
+  transform-origin: left;  /* la ligne part de la gauche               */
+  transition: transform 0.3s ease;
+}
+
+/* état survol/focus : la ligne s’étend */
+a:hover::after,
+a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+    .logo-style {
+      font-family: 'Impact', sans-serif;
+      letter-spacing: 3px;
+      background: linear-gradient(90deg, #fbbf24, #ef4444, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .video-thumbnail:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s ease;
+    }
+    .team-section * {
+  box-sizing: border-box;
+}
+
+.team-section .dsn-container {
+  padding: 60px 15px;
+  background-color: #f9f9f9;
+}
+
+.team-section .section-title {
+  margin-bottom: 40px;
+}
+
+.team-section .dsn-heading-title {
+  font-size: 32px;
+  color: #333;
+}
+
+.team-section .d-grid {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.team-section .team-item {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.team-section .team-item:hover {
+  transform: translateY(-5px);
+}
+
+.team-section .avatar img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.team-section .team-content {
+  text-align: center;
+  padding: 20px;
+}
+
+.team-section .team-content h4 {
+  font-size: 18px;
+  margin: 10px 0 5px;
+}
+
+.team-section .team-content span {
+  font-size: 14px;
+  color: #777;
+}
+
+.team-section .team-socials {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.team-section .team-socials li a {
+  color: #333;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.team-section .team-socials li a:hover {
+  color: #007bff;
+}
+
+.service-box {
+  transition: transform 0.4s ease;
+}
+
+.service-box:hover {
+  transform: scale(1.05);
+}
+
+.service-box:hover .service-title {
+  color: orange;
+  animation: typing 2.5s steps(30, end) 1;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid orange;
+}
+
+.service-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+}
+
+/* Animation de type "écriture" */
+@keyframes typing {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+  </style>
+</head>
+<body class="bg-gray-900 text-white overflow-x-hidden">
+
+  <!-- Navbar -->
+<!-- Navbar -->
+<nav class="flex justify-between items-center p-4 bg-black bg-opacity-80 fixed top-0 w-full z-50 shadow-lg backdrop-blur-md" data-aos-duration="1000" data-aos-once="false" data-aos="zoom-in">
+  <!-- Logo à gauche -->
+  <div class="text-3xl font-bold text-white logo-style">225 Events</div>
+
+  <!-- Hamburger icon visible only on mobile -->
+  <button class="md:hidden text-white text-3xl" onclick="toggleMenu()">
+    &#9776; <!-- icône 3 traits -->
+  </button>
+
+  <!-- Menu desktop -->
+  <ul class="hidden md:flex space-x-6 font-semibold text-white">
+    <li><a href="index.html" class="hover:text-yellow-400">Accueil</a></li>
+    <li><a href="evenement.html" class="hover:text-yellow-400">Événements</a></li>
+    <li><a href="video.html" class="hover:text-yellow-400">Vidéos</a></li>
+    <li><a href="service.html" class="hover:text-yellow-400">Services</a></li>
+    <li><a href="contact.html" class="hover:text-yellow-400">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- Menu mobile coulissant -->
+<div id="mobileMenu" class="fixed top-0 right-0 h-full w-64 bg-black bg-opacity-95 text-white transform translate-x-full transition-transform duration-300 z-50 p-6 md:hidden">
+  <button onclick="toggleMenu()" class="text-white text-2xl absolute top-4 right-4">&times;</button>
+  <ul class="mt-10 space-y-6 font-semibold">
+    <li><a href="index.html" onclick="toggleMenu()" class="hover:text-yellow-400">Accueil</a></li>
+    <li><a href="evenement.html" onclick="toggleMenu()" class="hover:text-yellow-400">Événements</a></li>
+    <li><a href="video.html" onclick="toggleMenu()" class="hover:text-yellow-400">Vidéos</a></li>
+    <li><a href="service.html" onclick="toggleMenu()" class="hover:text-yellow-400">Services</a></li>
+    <li><a href="contact.html" onclick="toggleMenu()" class="hover:text-yellow-400">Contact</a></li>
+  </ul>
+</div>
+
+
+<!-- Bannière avec carrousel automatique -->
+<section id="accueil" class="relative h-screen flex items-center justify-center text-center text-white overflow-hidden">
+  <div class="absolute w-full h-full">
+    <div class="absolute w-full h-full animate-fade-carousel" id="bannerCarousel">
+      <img src="https://images.pexels.com/photos/167636/pexels-photo-167636.jpeg" class="absolute w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
+      <img src="https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg" class="absolute w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
+      <img src="https://images.pexels.com/photos/2747448/pexels-photo-2747448.jpeg" class="absolute w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
+    </div>
+    <div class="absolute w-full h-full bg-black opacity-50"></div>
+  </div>
+  <div data-aos-duration="1000" data-aos-once="false" data-aos="zoom-in-up" class="z-10 p-8 bg-black bg-opacity-50 rounded-xl">
+    <h1 class="text-5xl font-extrabold mb-4 animate-bounce">Bienvenue chez <span class="logo-style">225 Events</span></h1>
+    <p class="text-xl">Le cœur des plus grands événements en Côte d'Ivoire</p>
+  </div>
+</section>
+
+
+<section id="qui-nous-sommes" class="bg-white py-20 px-6 md:px-24 font-sans text-gray-900" data-aos-duration="1000" data-aos-once="false" data-aos="zoom-in">
+  <div class="max-w-6xl mx-auto border-t border-b border-gray-300 py-10">
+
+    <div class="text-left mb-10" data-aos="flip-right" data-aos-duration="1000" data-aos-once="false">
+      <h4 class="uppercase text-sm tracking-widest text-gray-500 mb-2">À propos de nous</h4>
+      <h2 class="text-5xl font-bold text-green-900 tracking-tight">QUI NOUS SOMMES</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-10">
+      <!-- Partie gauche -->
+      <div class="space-y-10">
+        <!-- Bloc 1: Notre Vision -->
+        <div  data-aos="flip-up" data-aos-duration="1000" data-aos-once="false">
+          <button onclick="toggle('vision')" class="flex items-center space-x-4 group">
+            <span class="text-2xl">💡</span>
+            <span class="text-lg font-semibold text-green-800 group-hover:underline">NOTRE VISION</span>
+          </button>
+          <div id="vision" class="hidden mt-2 pl-10 text-gray-600">
+            Être un leader incontournable de l’événementiel en Afrique et au-delà.
+          </div>
+        </div>
+
+        <!-- Bloc 2: Notre But -->
+        <div  data-aos="fade-up-left" data-aos-duration="1000" data-aos-once="false">
+          <button onclick="toggle('but')" class="flex items-center space-x-4 group">
+            <span class="text-2xl">📦</span>
+            <span class="text-lg font-semibold text-green-800 group-hover:underline">NOTRE BUT</span>
+          </button>
+          <div id="but" class="hidden mt-2 pl-10 text-gray-600">
+            Répondre aux attentes de nos clients avec créativité et efficacité.
+          </div>
+        </div>
+
+        <!-- Bloc 3: Notre Mission -->
+        <div data-aos="fade-left" data-aos-duration="1000" data-aos-once="false">
+          <button onclick="toggle('mission')" class="flex items-center space-x-4 group">
+            <span class="text-2xl">📈</span>
+            <span class="text-lg font-semibold text-green-800 group-hover:underline">NOTRE MISSION</span>
+          </button>
+          <div id="mission" class="hidden mt-2 pl-10 text-gray-600">
+            Créer des moments exceptionnels et offrir des solutions stratégiques pour propulser nos clients vers de nouveaux sommets.
+          </div>
+        </div>
+
+        <!-- Réseaux sociaux -->
+        <div  data-aos="fade-down-left" data-aos-duration="1000" data-aos-once="false" class="flex space-x-4 text-green-800 mt-6 pl-2">
+          <a href="#" class="hover:text-green-600"><i class="fab fa-linkedin"></i> LinkedIn</a>
+          <a href="#" class="hover:text-green-600"><i class="fab fa-twitter"></i> Twitter</a>
+          <a href="#" class="hover:text-green-600"><i class="fab fa-instagram"></i> Instagram</a>
+          <a href="#" class="hover:text-green-600"><i class="fab fa-facebook"></i> Facebook</a>
+        </div>
+      </div>
+
+      <!-- Partie droite -->
+      <div>
+    <div class="text-left mb-10">
+      <h2 class="text-5xl font-bold text-green-900 tracking-tight" style="margin-top: -10px;">Bonjour, nous sommes Côte d'Ivoire Evènement</h2>
+    </div>
+        <p class="text-lg leading-relaxed mb-4">
+          Bonjour, nous sommes <strong>Côte d'Ivoire Évènement</strong>. 
+          Entreprise événementielle & marketing, nous proposons des services variés : 
+          rédaction de projets, branding, réseaux sociaux, matériel technique, audiovisuel, etc.
+        </p>
+        <p class="text-sm text-gray-700 mb-8">Foster N'CHO <br> <strong>Directeur Général</strong></p>
+
+
+<!-- Compteur stylisé avec bordure rectangle -->
+<div data-aos="fade-down-right" data-aos-duration="1000" data-aos-once="false" class="border-[4px] border-green-800 rounded-xl p-8 mt-10 w-full max-w-3xl bg-white shadow-lg">
+  <div data-aos="fade-up" data-aos-duration="1000" data-aos-once="false" class="text-green-900 text-6xl font-extrabold flex items-baseline space-x-6 justify-center">
+    <span id="counter" class="text-[170px] font-extrabold text-green-900 px-6 py-2 border-[3px] border-black-900 rounded-md leading-none tracking-wider" style="font-size: 40px;">
+      0
+    </span>
+    <span data-aos="fade-down" data-aos-duration="1000" data-aos-once="false" class="text-xl font-medium text-gray-700 ml-4">
+      ANNÉES D'EXPÉRIENCE ÉVÉNEMENTIELLE
+    </span>
+  </div>
+</div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Script -->
+<script>
+  // Accordéon toggle
+  function toggle(id) {
+    const blocks = ['vision', 'but', 'mission'];
+    blocks.forEach(block => {
+      document.getElementById(block).style.display = (block === id && document.getElementById(block).style.display !== 'block')
+        ? 'block' : 'none';
+    });
+  }
+
+  // Animation du compteur de 0 à 5
+  let count = 0;
+  const target = 5;
+  const speed = 300;
+  const counterElement = document.getElementById('counter');
+
+  function countUp() {
+    if (count < target) {
+      count++;
+      counterElement.textContent = count;
+      setTimeout(countUp, speed);
+    }
+  }
+
+  window.onload = countUp;
+</script>
+
+<!-- Optionnel : ajouter FontAwesome si vous voulez les icônes des réseaux -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+<!-- Vidéo principale avec auto-play si visible -->
+<section id="videos" class="py-20 bg-gray-900" data-aos-duration="1000" data-aos-once="false" data-aos="flip-up">
+  <h2 class="text-4xl text-center font-bold mb-12">Revivez nos moments forts</h2>
+  <div class="flex flex-wrap justify-center gap-4 px-4">
+    <!-- Miniatures -->
+    <div data-aos="flip-left" data-aos-duration="1000" data-aos-once="false" class="w-64 cursor-pointer video-thumbnail" onclick="changeVideo('https://www.youtube.com/embed/vlDzYIIOYmM')">
+      <img src="https://images.pexels.com/photos/2747448/pexels-photo-2747448.jpeg" class="rounded-lg" />
+    </div>
+    <div data-aos="flip-right" data-aos-duration="1000" data-aos-once="false" class="w-64 cursor-pointer video-thumbnail" onclick="changeVideo('https://www.youtube.com/embed/tgbNymZ7vqY')">
+      <img src="https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg" class="rounded-lg" />
+    </div>
+  </div>
+
+  <div class="mt-10 px-4 flex justify-center">
+    <iframe id="mainVideo" class="w-full md:w-2/3 h-96 rounded-lg"
+      src="https://www.youtube.com/embed/aqz-KE-bpKQ" 
+      allow="autoplay; encrypted-media" 
+      frameborder="0"
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
+
+
+  <!-- Section Services -->
+  <section id="services" class="py-20 bg-gray-800" data-aos="zoom-in" data-aos-duration="1000" data-aos-once="false">
+    <h2 class="text-4xl text-center font-bold mb-12">Nos Services</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 px-10">
+      <div data-aos="zoom-in-up" data-aos-duration="1000" data-aos-once="false" class="bg-gray-700 p-6 rounded-lg shadow hover:bg-gray-600 transition  service-box">
+        <h3 class="text-2xl font-bold mb-2 service-title">Acceuil & Protocole</h3>
+        <p>La communication événementielle est une stratégie de promotion qui utilise des événements (concerts, festivals, salons, etc.) pour renforcer l’image d’une marque ou d’une organisation. Elle permet de créer un lien direct et émotionnel avec le public. C’est un outil puissant pour attirer, informer et fidéliser. Elle combine créativité, logistique et impact médiatique pour marquer les esprits..</p>
+      </div>
+      <div data-aos="zoom-in-up" data-aos-duration="1000" data-aos-once="false" class="bg-gray-700 p-6 rounded-lg shadow hover:bg-gray-600 transition service-box">
+        <h3 class="text-2xl font-bold mb-2 service-title"> strategie de Communication Marketng</h3>
+        <p>La communication événementielle est une stratégie de promotion qui utilise des événements (concerts, festivals, salons, etc.) pour renforcer l’image d’une marque ou d’une organisation. Elle permet de créer un lien direct et émotionnel avec le public. C’est un outil puissant pour attirer, informer et fidéliser. Elle combine créativité, logistique et impact médiatique pour marquer les esprits..</p>
+      </div>
+    <div data-aos="zoom-in-up" data-aos-duration="1000" data-aos-once="false" class="bg-gray-700 p-6 rounded-lg shadow hover:bg-gray-600 transition service-box">
+        <h3 class="text-2xl font-bold mb-2 service-title">Booking & Conseil artistique</h3>
+        <p>L’organisation d’événements consiste à planifier, coordonner et exécuter toutes les étapes nécessaires à la réalisation d’un événement. Cela inclut la gestion du lieu, du programme, des intervenants et du public. C’est un processus créatif et logistique. Une bonne organisation garantit une expérience fluide, marquante et réussie pour les participants..</p>
+      </div>
+      <div data-aos="zoom-in-down" data-aos-duration="1000" data-aos-once="false" class="bg-gray-700 p-6 rounded-lg shadow hover:bg-gray-600 transition service-box">
+        <h3 class="text-2xl font-bold mb-2 service-title">Couverture audio-Visuel</h3>
+        <p>La communication événementielle est une stratégie de promotion qui utilise des événements (concerts, festivals, salons, etc.) pour renforcer l’image d’une marque ou d’une organisation. Elle permet de créer un lien direct et émotionnel avec le public. C’est un outil puissant pour attirer, informer et fidéliser. Elle combine créativité, logistique et impact médiatique pour marquer les esprits..</p>
+      </div>
+      <div data-aos="zoom-in-down" data-aos-duration="1000" data-aos-once="false" class="bg-gray-700 p-6 rounded-lg shadow hover:bg-gray-600 transition service-box">
+        <h3 class="text-2xl font-bold mb-2 service-title">organisation d'Evenement</h3>
+        <p>La logistique et le transport regroupent l’organisation et la gestion des flux de biens, de personnes ou de matériels. Ils assurent le bon déroulement des événements en garantissant que tout arrive à temps, au bon endroit. C’est un pilier essentiel pour la réussite opérationnelle. Une bonne logistique optimise les coûts, les délais et la qualité du service..</p>
+      </div>
+        <div data-aos="zoom-in-down" data-aos-duration="1000" data-aos-once="false" class="bg-gray-700 p-6 rounded-lg shadow hover:bg-gray-600 transition service-box">
+        <h3 class="text-2xl font-bold mb-2 service-title">Production Logistique</h3>
+        <p>La logistique et le transport regroupent l’organisation et la gestion des flux de biens, de personnes ou de matériels. Ils assurent le bon déroulement des événements en garantissant que tout arrive à temps, au bon endroit. C’est un pilier essentiel pour la réussite opérationnelle. Une bonne logistique optimise les coûts, les délais et la qualité du service..</p>
+      </div>
+      <div  data-aos="zoom-out" data-aos-duration="1000" data-aos-once="false" class="bg-gray-700 p-6 rounded-lg shadow hover:bg-gray-600 transition service-box">
+        <h3 class="text-2xl font-bold mb-2 service-title">Conception & Gestion d'Evenement Esclusif</h3>
+        <p>L’organisation d’événements consiste à planifier, coordonner et exécuter toutes les étapes nécessaires à la réalisation d’un événement. Cela inclut la gestion du lieu, du programme, des intervenants et du public. C’est un processus créatif et logistique. Une bonne organisation garantit une expérience fluide, marquante et réussie pour les participants..</p>
+      </div>
+        <div  data-aos="zoom-out" data-aos-duration="1000" data-aos-once="false" class="bg-gray-700 p-6 rounded-lg shadow hover:bg-gray-600 transition service-box">
+        <h3 class="text-2xl font-bold mb-2 service-title">Billetterie & E-Billetterie</h3>
+        <p>La logistique et le transport regroupent l’organisation et la gestion des flux de biens, de personnes ou de matériels. Ils assurent le bon déroulement des événements en garantissant que tout arrive à temps, au bon endroit. C’est un pilier essentiel pour la réussite opérationnelle. Une bonne logistique optimise les coûts, les délais et la qualité du service..</p>
+      </div>
+    </div>
+  </section>
+<div class="team-section" data-aos-duration="1000" data-aos-once="false" data-aos="zoom-out-up">
+  <div class="dsn-container over-hidden background-section section-padding">
+      <div class="section-title container d-flex  mb-70">
+          <div class="sub-section-title">
+              <p class="description d-inline-block  circle-before mb-10">Notre Equipe </p>
+              <h2 class="title-h2 dsn-heading-title p-relative title-block-lg d-block heading-color">
+                  La meilleure équipe de tous les temps!
+              </h2>
+          </div>
+      </div>
+      <div data-aos="zoom-in-down" data-aos-duration="1000" data-aos-once="false" class="d-grid grid-lg-4 grid-sm-2 dsn-team v-dark-head">
+          <div class="team-item p-relative grid-item box-hover-image">
+            <div class="team-item-inner background-main">
+                <div class="avatar box-img" data-overlay="4">
+                    <img class="cover-bg-img" src="https://cievenement.com/assets/img/team/1.jpg" alt="Membre équipe">
+                </div>
+                <div class="team-content border-before text-center">
+                    <h4 class="text-name sm-title-block">N'CHO Foster</h4>
+                    <span class="text-position">Directeur Général</span>
+                    <ul class="team-socials dsn-socials box-social">
+                        <li>
+                            <a href="https://www.facebook.com/fosternchoci" target="_blank">
+                                <i class="fab fa-facebook-f"></i> <span>Facebook</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/foster_ncho/" target="_blank">
+                                <i class="fab fa-instagram"></i> <span>Instagram</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/n’cho-foster-64992720b/" target="_blank">
+                                <i class="fab fa-linkedin-in"></i> <span>LinkedIn</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+         <div data-aos="zoom-in-up" data-aos-duration="1000" data-aos-once="false" class="team-item p-relative grid-item box-hover-image">
+            <div class="team-item-inner background-main">
+                <div class="avatar box-img" data-overlay="4">
+                    <img class="cover-bg-img" src="https://cievenement.com/assets/img/team/1.jpg" alt="Membre équipe">
+                </div>
+                <div class="team-content border-before text-center">
+                    <h4 class="text-name sm-title-block">N'CHO Foster</h4>
+                    <span class="text-position">Directeur Général</span>
+                    <ul class="team-socials dsn-socials box-social">
+                        <li>
+                            <a href="https://www.facebook.com/fosternchoci" target="_blank">
+                                <i class="fab fa-facebook-f"></i> <span>Facebook</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/foster_ncho/" target="_blank">
+                                <i class="fab fa-instagram"></i> <span>Instagram</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/n’cho-foster-64992720b/" target="_blank">
+                                <i class="fab fa-linkedin-in"></i> <span>LinkedIn</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+         <div data-aos="zoom-in-down" data-aos-duration="1000" data-aos-once="false" class="team-item p-relative grid-item box-hover-image">
+            <div class="team-item-inner background-main">
+                <div class="avatar box-img" data-overlay="4">
+                    <img class="cover-bg-img" src="https://cievenement.com/assets/img/team/1.jpg" alt="Membre équipe">
+                </div>
+                <div class="team-content border-before text-center">
+                    <h4 class="text-name sm-title-block">N'CHO Foster</h4>
+                    <span class="text-position">Directeur Général</span>
+                    <ul class="team-socials dsn-socials box-social">
+                        <li>
+                            <a href="https://www.facebook.com/fosternchoci" target="_blank">
+                                <i class="fab fa-facebook-f"></i> <span>Facebook</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/foster_ncho/" target="_blank">
+                                <i class="fab fa-instagram"></i> <span>Instagram</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/n’cho-foster-64992720b/" target="_blank">
+                                <i class="fab fa-linkedin-in"></i> <span>LinkedIn</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+         <div data-aos="zoom-in-up" data-aos-duration="1000" data-aos-once="false" class="team-item p-relative grid-item box-hover-image">
+            <div class="team-item-inner background-main">
+                <div class="avatar box-img" data-overlay="4">
+                    <img class="cover-bg-img" src="https://cievenement.com/assets/img/team/1.jpg" alt="Membre équipe">
+                </div>
+                <div class="team-content border-before text-center">
+                    <h4 class="text-name sm-title-block">N'CHO Foster</h4>
+                    <span class="text-position">Directeur Général</span>
+                    <ul class="team-socials dsn-socials box-social">
+                        <li>
+                            <a href="https://www.facebook.com/fosternchoci" target="_blank">
+                                <i class="fab fa-facebook-f"></i> <span>Facebook</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/foster_ncho/" target="_blank">
+                                <i class="fab fa-instagram"></i> <span>Instagram</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/n’cho-foster-64992720b/" target="_blank">
+                                <i class="fab fa-linkedin-in"></i> <span>LinkedIn</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+         <div data-aos="zoom-in-down" data-aos-duration="1000" data-aos-once="false" class="team-item p-relative grid-item box-hover-image">
+            <div class="team-item-inner background-main">
+                <div class="avatar box-img" data-overlay="4">
+                    <img class="cover-bg-img" src="https://cievenement.com/assets/img/team/1.jpg" alt="Membre équipe">
+                </div>
+                <div class="team-content border-before text-center">
+                    <h4 class="text-name sm-title-block">N'CHO Foster</h4>
+                    <span class="text-position">Directeur Général</span>
+                    <ul class="team-socials dsn-socials box-social">
+                        <li>
+                            <a href="https://www.facebook.com/fosternchoci" target="_blank">
+                                <i class="fab fa-facebook-f"></i> <span>Facebook</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/foster_ncho/" target="_blank">
+                                <i class="fab fa-instagram"></i> <span>Instagram</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/n’cho-foster-64992720b/" target="_blank">
+                                <i class="fab fa-linkedin-in"></i> <span>LinkedIn</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+         <div data-aos="zoom-in-up" data-aos-duration="1000" data-aos-once="false" class="team-item p-relative grid-item box-hover-image">
+            <div class="team-item-inner background-main">
+                <div class="avatar box-img" data-overlay="4">
+                    <img class="cover-bg-img" src="https://cievenement.com/assets/img/team/1.jpg" alt="Membre équipe">
+                </div>
+                <div class="team-content border-before text-center">
+                    <h4 class="text-name sm-title-block">N'CHO Foster</h4>
+                    <span class="text-position">Directeur Général</span>
+                    <ul class="team-socials dsn-socials box-social">
+                        <li>
+                            <a href="https://www.facebook.com/fosternchoci" target="_blank">
+                                <i class="fab fa-facebook-f"></i> <span>Facebook</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/foster_ncho/" target="_blank">
+                                <i class="fab fa-instagram"></i> <span>Instagram</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/n’cho-foster-64992720b/" target="_blank">
+                                <i class="fab fa-linkedin-in"></i> <span>LinkedIn</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+         <div data-aos="zoom-in-down" data-aos-duration="1000" data-aos-once="false" class="team-item p-relative grid-item box-hover-image">
+            <div class="team-item-inner background-main">
+                <div class="avatar box-img" data-overlay="4">
+                    <img class="cover-bg-img" src="https://cievenement.com/assets/img/team/1.jpg" alt="Membre équipe">
+                </div>
+                <div class="team-content border-before text-center">
+                    <h4 class="text-name sm-title-block">N'CHO Foster</h4>
+                    <span class="text-position">Directeur Général</span>
+                    <ul class="team-socials dsn-socials box-social">
+                        <li>
+                            <a href="https://www.facebook.com/fosternchoci" target="_blank">
+                                <i class="fab fa-facebook-f"></i> <span>Facebook</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/foster_ncho/" target="_blank">
+                                <i class="fab fa-instagram"></i> <span>Instagram</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/n’cho-foster-64992720b/" target="_blank">
+                                <i class="fab fa-linkedin-in"></i> <span>LinkedIn</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+         <div data-aos="zoom-in-up" data-aos-duration="1000" data-aos-once="false" class="team-item p-relative grid-item box-hover-image">
+            <div class="team-item-inner background-main">
+                <div class="avatar box-img" data-overlay="4">
+                    <img class="cover-bg-img" src="https://cievenement.com/assets/img/team/1.jpg" alt="Membre équipe">
+                </div>
+                <div class="team-content border-before text-center">
+                    <h4 class="text-name sm-title-block">N'CHO Foster</h4>
+                    <span class="text-position">Directeur Général</span>
+                    <ul class="team-socials dsn-socials box-social">
+                        <li>
+                            <a href="https://www.facebook.com/fosternchoci" target="_blank">
+                                <i class="fab fa-facebook-f"></i> <span>Facebook</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/foster_ncho/" target="_blank">
+                                <i class="fab fa-instagram"></i> <span>Instagram</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/n’cho-foster-64992720b/" target="_blank">
+                                <i class="fab fa-linkedin-in"></i> <span>LinkedIn</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+         <div data-aos="zoom-in-down" data-aos-duration="1000" data-aos-once="false" class="team-item p-relative grid-item box-hover-image">
+            <div class="team-item-inner background-main">
+                <div class="avatar box-img" data-overlay="4">
+                    <img class="cover-bg-img" src="https://cievenement.com/assets/img/team/1.jpg" alt="Membre équipe">
+                </div>
+                <div class="team-content border-before text-center">
+                    <h4 class="text-name sm-title-block">N'CHO Foster</h4>
+                    <span class="text-position">Directeur Général</span>
+                    <ul class="team-socials dsn-socials box-social">
+                        <li>
+                            <a href="https://www.facebook.com/fosternchoci" target="_blank">
+                                <i class="fab fa-facebook-f"></i> <span>Facebook</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/foster_ncho/" target="_blank">
+                                <i class="fab fa-instagram"></i> <span>Instagram</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/n’cho-foster-64992720b/" target="_blank">
+                                <i class="fab fa-linkedin-in"></i> <span>LinkedIn</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+         <div data-aos="zoom-in-up" data-aos-duration="1000" data-aos-once="false" class="team-item p-relative grid-item box-hover-image">
+            <div class="team-item-inner background-main">
+                <div class="avatar box-img" data-overlay="4">
+                    <img class="cover-bg-img" src="https://cievenement.com/assets/img/team/1.jpg" alt="Membre équipe">
+                </div>
+                <div class="team-content border-before text-center">
+                    <h4 class="text-name sm-title-block">N'CHO Foster</h4>
+                    <span class="text-position">Directeur Général</span>
+                    <ul class="team-socials dsn-socials box-social">
+                        <li>
+                            <a href="https://www.facebook.com/fosternchoci" target="_blank">
+                                <i class="fab fa-facebook-f"></i> <span>Facebook</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/foster_ncho/" target="_blank">
+                                <i class="fab fa-instagram"></i> <span>Instagram</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/n’cho-foster-64992720b/" target="_blank">
+                                <i class="fab fa-linkedin-in"></i> <span>LinkedIn</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+
+
+<section class="py-20 bg-gray-900" data-aos="flip-down" data-aos-duration="1000" data-aos-once="false">
+  <h2 class="text-4xl text-center font-bold mb-10">Notre Portfolio</h2>
+  <div data-aos="flip-down" data-aos-duration="1000" data-aos-once="false" class="grid grid-cols-2 md:grid-cols-4 gap-4 px-6">
+    <div data-aos="fade-left" data-aos-duration="1000" data-aos-once="false" class="relative group overflow-hidden rounded-lg">
+      <img src="https://images.pexels.com/photos/167636/pexels-photo-167636.jpeg" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-300" />
+      <div class="absolute bottom-0 w-full bg-black bg-opacity-70 text-white text-center py-2 opacity-0 group-hover:opacity-100 transition">Concert live avec projecteurs</div>
+    </div>
+    <div data-aos="fade-right" data-aos-duration="1000" data-aos-once="false" class="relative group overflow-hidden rounded-lg">
+      <img src="https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-300" />
+      <div class="absolute bottom-0 w-full bg-black bg-opacity-70 text-white text-center py-2 opacity-0 group-hover:opacity-100 transition">Festival de nuit ambiance bleue</div>
+    </div>
+    <div data-aos="fade-left" data-aos-duration="1000" data-aos-once="false" class="relative group overflow-hidden rounded-lg">
+      <img src="https://images.pexels.com/photos/2747448/pexels-photo-2747448.jpeg" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-300" />
+      <div class="absolute bottom-0 w-full bg-black bg-opacity-70 text-white text-center py-2 opacity-0 group-hover:opacity-100 transition">Foule à un festival en extérieur</div>
+    </div>
+    <div data-aos="fade-right" data-aos-duration="1000" data-aos-once="false" class="relative group overflow-hidden rounded-lg">
+      <img src="https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-300" />
+      <div class="absolute bottom-0 w-full bg-black bg-opacity-70 text-white text-center py-2 opacity-0 group-hover:opacity-100 transition">Scène avec éclairage rose/violet</div>
+    </div>
+    <div data-aos="fade-left" data-aos-duration="1000" data-aos-once="false" class="relative group overflow-hidden rounded-lg">
+      <img src="https://images.pexels.com/photos/3183127/pexels-photo-3183127.jpeg" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-300" />
+      <div class="absolute bottom-0 w-full bg-black bg-opacity-70 text-white text-center py-2 opacity-0 group-hover:opacity-100 transition">Public joyeux à un concert</div>
+    </div>
+    <div data-aos="fade-right" data-aos-duration="1000" data-aos-once="false" class="relative group overflow-hidden rounded-lg">
+      <img src="https://images.pexels.com/photos/1770323/pexels-photo-1770323.jpeg" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-300" />
+      <div class="absolute bottom-0 w-full bg-black bg-opacity-70 text-white text-center py-2 opacity-0 group-hover:opacity-100 transition">Artiste sur scène devant une grande foule</div>
+    </div>
+  </div>
+</section>
+
+  <!-- Contact -->
+  <section data-aos="fade-up-left" data-aos-duration="1000" data-aos-once="false" id="contact" class="py-20 bg-gray-900 text-center">
+    <h2 class="text-4xl font-bold mb-6">Contactez-nous</h2>
+    <p  data-aos="fade-up-right" data-aos-duration="1000" data-aos-once="false" class="mb-4">📞 +225 07 07 07 07 | 📧 contact@225events.ci</p>
+    <button class="mt-4 bg-yellow-500 text-black px-6 py-2 rounded-full font-bold hover:bg-yellow-400 transition">Nous écrire</button>
+  </section>
+
+  <!-- Footer -->
+  <footer  class="bg-black py-6 text-center text-gray-400">
+    &copy; 2025 225 Events. Tous droits réservés.
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    function changeVideo(url) {
+      document.getElementById('mainVideo').src = url;
+    }
+  </script>
+  <script>
+  const images = document.querySelectorAll("#bannerCarousel img");
+  let current = 0;
+  setInterval(() => {
+    images.forEach((img, i) => {
+      img.style.opacity = (i === current) ? '1' : '0';
+    });
+    current = (current + 1) % images.length;
+  }, 4000);
+</script>
+<script>
+  function changeVideo(url) {
+    const video = document.getElementById("mainVideo");
+    video.src = url + "?autoplay=1&enablejsapi=1";
+  }
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const iframe = document.getElementById('mainVideo');
+      if (iframe && iframe.contentWindow) {
+        if (entry.isIntersecting) {
+          iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+        } else {
+          iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+        }
+      }
+    });
+  }, { threshold: 0.5 });
+
+  observer.observe(document.getElementById('mainVideo'));
+</script>
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('translate-x-full');
+    menu.classList.toggle('translate-x-0');
+  }
+</script>
+
+<script src="https://kit.fontawesome.com/your-fontawesome-key.js" crossorigin="anonymous"></script>
+<!-- Avant la balise </body> -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
+</body>
+</html>

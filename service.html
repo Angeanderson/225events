@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>225 Events - Communication & Logistique</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/your-fontawesome-key.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- Dans le <head> -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+<!-- Font Awesome pour les icônes -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+  <style>
+    /* style global pour tous les liens */
+a {
+  color: inherit;          /* garde la couleur héritée du parent  */
+  text-decoration: none;   /* enlève l’underline natif            */
+  position: relative;      /* nécessaire pour positionner le ::after */
+}
+
+/* pseudo-élément qui servira de ligne animée */
+a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;            /* distance sous le texte (ajuste si besoin) */
+  width: 100%;
+  height: 2px;             /* épaisseur de la ligne                     */
+  background-color: currentColor; /* même couleur que le texte          */
+
+  /* Animation : caché au repos */
+  transform: scaleX(0);
+  transform-origin: left;  /* la ligne part de la gauche               */
+  transition: transform 0.3s ease;
+}
+
+/* état survol/focus : la ligne s’étend */
+a:hover::after,
+a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+    .logo-style {
+      font-family: 'Impact', sans-serif;
+      letter-spacing: 3px;
+      background: linear-gradient(90deg, #fbbf24, #ef4444, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .video-thumbnail:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s ease;
+    }
+    .team-section * {
+  box-sizing: border-box;
+}
+
+
+
+
+
+body {
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+    background: #f0f8ff;
+  }
+
+  .header {
+    position: relative;
+    background: linear-gradient(to top, #a8e0ff 0%, #70cad1 100%);
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+  }
+
+  .header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+  }
+
+  .wave {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .months {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    padding: 20px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .months::-webkit-scrollbar {
+    display: none; /* Masquer la scrollbar */
+  }
+  
+  .months button {
+    background: #70cad1;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    white-space: nowrap;
+    transition: 0.3s;
+  }
+  
+  .months button:hover {
+    background: #4ab5be;
+  }
+  
+
+  .videos-container {
+    display: grid;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+  }
+
+  .video-card {
+    width: 100%;
+    max-width: 300px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+  }
+
+  .video-card video {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  @media (min-width: 768px) {
+    .videos-container {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .videos-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .glass {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .service-video {
+    transition: transform 0.4s ease;
+  }
+  .service-video:hover {
+    transform: scale(1.02);
+  }
+  </style>
+</head>
+<body >
+
+  <!-- Navbar -->
+<!-- Navbar -->
+<nav class="flex justify-between items-center p-4 bg-black bg-opacity-80 fixed top-0 w-full z-50 shadow-lg backdrop-blur-md" data-aos-duration="1000" data-aos-once="false" data-aos="zoom-in">
+  <!-- Logo à gauche -->
+  <div class="text-3xl font-bold text-white logo-style">225 Events</div>
+
+  <!-- Hamburger icon visible only on mobile -->
+  <button class="md:hidden text-white text-3xl" onclick="toggleMenu()">
+    &#9776; <!-- icône 3 traits -->
+  </button>
+
+  <!-- Menu desktop -->
+  <ul class="hidden md:flex space-x-6 font-semibold text-white">
+    <li><a href="index.html" class="hover:text-yellow-400">Accueil</a></li>
+    <li><a href="evenement.html" class="hover:text-yellow-400">Événements</a></li>
+    <li><a href="video.html" class="hover:text-yellow-400">Vidéos</a></li>
+    <li><a href="service.html" class="hover:text-yellow-400">Services</a></li>
+    <li><a href="contact.html" class="hover:text-yellow-400">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- Menu mobile coulissant -->
+<div id="mobileMenu" class="fixed top-0 right-0 h-full w-64 bg-black bg-opacity-95 text-white transform translate-x-full transition-transform duration-300 z-50 p-6 md:hidden">
+  <button onclick="toggleMenu()" class="text-white text-2xl absolute top-4 right-4">&times;</button>
+  <ul class="mt-10 space-y-6 font-semibold">
+    <li><a href="index.html" onclick="toggleMenu()" class="hover:text-yellow-400">Accueil</a></li>
+    <li><a href="evenement.html" onclick="toggleMenu()" class="hover:text-yellow-400">Événements</a></li>
+    <li><a href="video.html" onclick="toggleMenu()" class="hover:text-yellow-400">Vidéos</a></li>
+    <li><a href="service.html" onclick="toggleMenu()" class="hover:text-yellow-400">Services</a></li>
+    <li><a href="contact.html" onclick="toggleMenu()" class="hover:text-yellow-400">Contact</a></li>
+  </ul>
+</div>
+
+<section id="services" class="py-24 bg-gradient-to-br from-gray-900 to-black text-white">
+    <h2 class="text-5xl text-center font-extrabold mb-16 tracking-wider" data-aos="fade-down" data-aos-duration="1000">Nos Services</h2>
+  
+    <div class="space-y-24 px-6 md:px-20">
+  
+      <!-- 1. Accueil & Protocole -->
+      <div class="grid md:grid-cols-2 gap-10 items-center" data-aos="fade-up-right">
+        <div class="glass rounded-2xl p-8 shadow-lg">
+          <h3 class="text-3xl font-bold mb-4 text-purple-300">Accueil & Protocole</h3>
+          <p class="text-gray-200">La communication événementielle est une stratégie de promotion qui utilise des événements pour renforcer l’image d’une marque ou d’une organisation.</p>
+        </div>
+        <video autoplay loop muted class="rounded-2xl shadow-xl service-video">
+          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+          <p class="text-gray-400">Vidéo non disponible</p>
+        </video>
+      </div>
+  
+      <!-- 2. Stratégie Marketing -->
+      <div class="grid md:grid-cols-2 gap-10 items-center md:flex-row-reverse" data-aos="fade-up-left">
+        <div class="glass rounded-2xl p-8 shadow-lg">
+          <h3 class="text-3xl font-bold mb-4 text-pink-300">Stratégie de Communication Marketing</h3>
+          <p class="text-gray-200">Elle permet de créer un lien direct et émotionnel avec le public. Un outil puissant pour attirer, informer et fidéliser.</p>
+        </div>
+        <video autoplay loop muted class="rounded-2xl shadow-xl service-video">
+          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+          <p class="text-gray-400">Vidéo non disponible</p>
+        </video>
+      </div>
+  
+      <!-- 3. Booking & Conseil artistique -->
+      <div class="grid md:grid-cols-2 gap-10 items-center" data-aos="fade-up-right">
+        <div class="glass rounded-2xl p-8 shadow-lg">
+          <h3 class="text-3xl font-bold mb-4 text-blue-300">Booking & Conseil artistique</h3>
+          <p class="text-gray-200">Organisation, coordination, et exécution d’un événement avec créativité et logistique.</p>
+        </div>
+        <video autoplay loop muted class="rounded-2xl shadow-xl service-video">
+          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+          <p class="text-gray-400">Vidéo non disponible</p>
+        </video>
+      </div>
+  
+      <!-- 4. Couverture audio-visuelle -->
+      <div class="grid md:grid-cols-2 gap-10 items-center md:flex-row-reverse" data-aos="fade-up-left">
+        <div class="glass rounded-2xl p-8 shadow-lg">
+          <h3 class="text-3xl font-bold mb-4 text-red-300">Couverture audio-visuelle</h3>
+          <p class="text-gray-200">Renforcez votre image de marque avec une communication impactante et visuelle.</p>
+        </div>
+        <video autoplay loop muted class="rounded-2xl shadow-xl service-video">
+          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+          <p class="text-gray-400">Vidéo non disponible</p>
+        </video>
+      </div>
+  
+      <!-- 5. Organisation d’Événement -->
+      <div class="grid md:grid-cols-2 gap-10 items-center" data-aos="fade-up-right">
+        <div class="glass rounded-2xl p-8 shadow-lg">
+          <h3 class="text-3xl font-bold mb-4 text-yellow-300">Organisation d’Événement</h3>
+          <p class="text-gray-200">Planification et coordination complète pour une expérience fluide et marquante.</p>
+        </div>
+        <video autoplay loop muted class="rounded-2xl shadow-xl service-video">
+          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+          <p class="text-gray-400">Vidéo non disponible</p>
+        </video>
+      </div>
+  
+      <!-- 6. Production Logistique -->
+      <div class="grid md:grid-cols-2 gap-10 items-center md:flex-row-reverse" data-aos="fade-up-left">
+        <div class="glass rounded-2xl p-8 shadow-lg">
+          <h3 class="text-3xl font-bold mb-4 text-green-300">Production Logistique</h3>
+          <p class="text-gray-200">Gestion complète du transport et de la logistique pour une opération parfaite.</p>
+        </div>
+        <video autoplay loop muted class="rounded-2xl shadow-xl service-video">
+          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+          <p class="text-gray-400">Vidéo non disponible</p>
+        </video>
+      </div>
+  
+      <!-- 7. Conception & Gestion d’Événement Exclusif -->
+      <div class="grid md:grid-cols-2 gap-10 items-center" data-aos="fade-up-right">
+        <div class="glass rounded-2xl p-8 shadow-lg">
+          <h3 class="text-3xl font-bold mb-4 text-indigo-300">Conception & Gestion d’Événement Exclusif</h3>
+          <p class="text-gray-200">Créez des expériences uniques et inoubliables grâce à une gestion sur-mesure.</p>
+        </div>
+        <video autoplay loop muted class="rounded-2xl shadow-xl service-video">
+          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+          <p class="text-gray-400">Vidéo non disponible</p>
+        </video>
+      </div>
+  
+      <!-- 8. Billetterie & E-Billetterie -->
+      <div class="grid md:grid-cols-2 gap-10 items-center md:flex-row-reverse" data-aos="fade-up-left">
+        <div class="glass rounded-2xl p-8 shadow-lg">
+          <h3 class="text-3xl font-bold mb-4 text-teal-300">Billetterie & E-Billetterie</h3>
+          <p class="text-gray-200">Solutions modernes pour gérer les entrées physiques et en ligne efficacement.</p>
+        </div>
+        <video autoplay loop muted class="rounded-2xl shadow-xl service-video">
+          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+          <p class="text-gray-400">Vidéo non disponible</p>
+        </video>
+      </div>
+  
+    </div>
+  </section>
+  
+
+ 
+ <!-- JavaScript -->
+ <script>
+    function changeVideo(url) {
+      document.getElementById('mainVideo').src = url;
+    }
+  </script>
+  <script>
+  const images = document.querySelectorAll("#bannerCarousel img");
+  let current = 0;
+  setInterval(() => {
+    images.forEach((img, i) => {
+      img.style.opacity = (i === current) ? '1' : '0';
+    });
+    current = (current + 1) % images.length;
+  }, 4000);
+</script>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('translate-x-full');
+    menu.classList.toggle('translate-x-0');
+  }
+</script>
+
+<script src="https://kit.fontawesome.com/your-fontawesome-key.js" crossorigin="anonymous"></script>
+<!-- Avant la balise </body> -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
+    
+</body>
+</html>

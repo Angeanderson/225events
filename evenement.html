@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>225 Events - Communication & Logistique</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/your-fontawesome-key.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- Dans le <head> -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+<!-- Font Awesome pour les icônes -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+  <style>
+    /* style global pour tous les liens */
+a {
+  color: inherit;          /* garde la couleur héritée du parent  */
+  text-decoration: none;   /* enlève l’underline natif            */
+  position: relative;      /* nécessaire pour positionner le ::after */
+}
+
+/* pseudo-élément qui servira de ligne animée */
+a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;            /* distance sous le texte (ajuste si besoin) */
+  width: 100%;
+  height: 2px;             /* épaisseur de la ligne                     */
+  background-color: currentColor; /* même couleur que le texte          */
+
+  /* Animation : caché au repos */
+  transform: scaleX(0);
+  transform-origin: left;  /* la ligne part de la gauche               */
+  transition: transform 0.3s ease;
+}
+
+/* état survol/focus : la ligne s’étend */
+a:hover::after,
+a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+    .logo-style {
+      font-family: 'Impact', sans-serif;
+      letter-spacing: 3px;
+      background: linear-gradient(90deg, #fbbf24, #ef4444, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .video-thumbnail:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s ease;
+    }
+    .team-section * {
+  box-sizing: border-box;
+}
+
+.team-section .dsn-container {
+  padding: 60px 15px;
+  background-color: #f9f9f9;
+}
+
+.team-section .section-title {
+  margin-bottom: 40px;
+}
+
+.team-section .dsn-heading-title {
+  font-size: 32px;
+  color: #333;
+}
+
+.team-section .d-grid {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.team-section .team-item {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.team-section .team-item:hover {
+  transform: translateY(-5px);
+}
+
+.team-section .avatar img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.team-section .team-content {
+  text-align: center;
+  padding: 20px;
+}
+
+.team-section .team-content h4 {
+  font-size: 18px;
+  margin: 10px 0 5px;
+}
+
+.team-section .team-content span {
+  font-size: 14px;
+  color: #777;
+}
+
+.team-section .team-socials {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.team-section .team-socials li a {
+  color: #333;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.team-section .team-socials li a:hover {
+  color: #007bff;
+}
+
+.service-box {
+  transition: transform 0.4s ease;
+}
+
+.service-box:hover {
+  transform: scale(1.05);
+}
+
+.service-box:hover .service-title {
+  color: orange;
+  animation: typing 2.5s steps(30, end) 1;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid orange;
+}
+
+.service-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+}
+
+/* Animation de type "écriture" */
+@keyframes typing {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+  </style>
+  <!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- AOS (Animate On Scroll) CSS & JS -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    AOS.init({
+      duration: 1000,
+      once: false
+    });
+  });
+</script>
+
+</head>
+<body class="bg-gray-900 text-white overflow-x-hidden">
+
+  <!-- Navbar -->
+<!-- Navbar -->
+<nav class="flex justify-between items-center p-4 bg-black bg-opacity-80 fixed top-0 w-full z-50 shadow-lg backdrop-blur-md" data-aos-duration="1000" data-aos-once="false" data-aos="zoom-in">
+  <!-- Logo à gauche -->
+  <div class="text-3xl font-bold text-white logo-style">225 Events</div>
+
+  <!-- Hamburger icon visible only on mobile -->
+  <button class="md:hidden text-white text-3xl" onclick="toggleMenu()">
+    &#9776; <!-- icône 3 traits -->
+  </button>
+
+  <!-- Menu desktop -->
+  <ul class="hidden md:flex space-x-6 font-semibold text-white" >
+    <li><a href="index.html" class="hover:text-yellow-400">Accueil</a></li>
+    <li><a href="evenement.html" class="hover:text-yellow-400">Événements</a></li>
+    <li><a href="video.html" class="hover:text-yellow-400">Vidéos</a></li>
+    <li><a href="service.html" class="hover:text-yellow-400">Services</a></li>
+    <li><a href="contact.html" class="hover:text-yellow-400">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- Menu mobile coulissant -->
+<div id="mobileMenu" class="fixed top-0 right-0 h-full w-64 bg-black bg-opacity-95 text-white transform translate-x-full transition-transform duration-300 z-50 p-6 md:hidden">
+  <button onclick="toggleMenu()" class="text-white text-2xl absolute top-4 right-4">&times;</button>
+  <ul class="mt-10 space-y-6 font-semibold">
+    <li><a href="index.html" onclick="toggleMenu()" class="hover:text-yellow-400">Accueil</a></li>
+    <li><a href="evenement.html" onclick="toggleMenu()" class="hover:text-yellow-400">Événements</a></li>
+    <li><a href="video.html" onclick="toggleMenu()" class="hover:text-yellow-400">Vidéos</a></li>
+    <li><a href="service.html" onclick="toggleMenu()" class="hover:text-yellow-400">Services</a></li>
+    <li><a href="contact.html" onclick="toggleMenu()" class="hover:text-yellow-400">Contact</a></li>
+  </ul>
+</div>
+
+
+<!-- Bannière avec carrousel automatique -->
+<section id="accueil" class="relative h-screen flex items-center justify-center text-center text-white overflow-hidden">
+  <div class="absolute w-full h-full">
+    <div class="absolute w-full h-full animate-fade-carousel" id="bannerCarousel">
+      <img src="https://images.pexels.com/photos/167636/pexels-photo-167636.jpeg" class="absolute w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
+      <img src="https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg" class="absolute w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
+      <img src="https://images.pexels.com/photos/2747448/pexels-photo-2747448.jpeg" class="absolute w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
+    </div>
+    <div class="absolute w-full h-full bg-black opacity-50"></div>
+  </div>
+  <div data-aos-duration="1000" data-aos-once="false" data-aos="zoom-in-up" class="z-10 p-8 bg-black bg-opacity-50 rounded-xl">
+    <h1 class="text-5xl font-extrabold mb-4 animate-bounce">Bienvenue chez <span class="logo-style">225 Events</span></h1>
+    <p class="text-xl">Le cœur des plus grands événements en Côte d'Ivoire</p>
+  </div>
+</section>
+
+
+<section class="min-h-screen bg-gray-100 py-20 px-4">
+    <div class="max-w-6xl mx-auto text-center mb-12" data-aos="fade-down">
+      <h2 class="text-4xl font-extrabold text-gray-800 mb-4">Événements à venir</h2>
+      <p class="text-lg text-gray-600">Ne manquez aucun de nos événements exclusifs et inoubliables.</p>
+    </div>
+  
+    <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+      <!-- Event Card -->
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up">
+        <img src="https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg" class="w-full h-56 object-cover" alt="Event">
+        <div class="p-6">
+          <h3 class="text-2xl font-bold text-gray-800 mb-2 hover:text-orange-500 transition duration-300">Concert Live Abidjan</h3>
+          <p class="text-gray-600 mb-4">Venez vibrer au rythme de la musique avec les meilleurs artistes du pays.</p>
+          <p class="text-sm text-gray-500"><strong>Date:</strong> 25 Juin 2025</p>
+          <p class="text-sm text-gray-500"><strong>Lieu:</strong> Palais de la Culture</p>
+        </div>
+      </div>
+  
+      <!-- Event Card -->
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+        <img src="https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg" class="w-full h-56 object-cover" alt="Event">
+        <div class="p-6">
+          <h3 class="text-2xl font-bold text-gray-800 mb-2 hover:text-orange-500 transition duration-300">Festival de la Gastronomie</h3>
+          <p class="text-gray-600 mb-4">Dégustez des plats incroyables dans une ambiance festive.</p>
+          <p class="text-sm text-gray-500"><strong>Date:</strong> 10 Juillet 2025</p>
+          <p class="text-sm text-gray-500"><strong>Lieu:</strong> Plateau, Abidjan</p>
+        </div>
+      </div>
+  
+      <!-- Event Card -->
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="400">
+        <img src="https://images.pexels.com/photos/167636/pexels-photo-167636.jpeg" class="w-full h-56 object-cover" alt="Event">
+        <div class="p-6">
+          <h3 class="text-2xl font-bold text-gray-800 mb-2 hover:text-orange-500 transition duration-300">Conférence sur l’Entrepreneuriat</h3>
+          <p class="text-gray-600 mb-4">Apprenez des meilleurs intervenants du monde des affaires.</p>
+          <p class="text-sm text-gray-500"><strong>Date:</strong> 30 Juillet 2025</p>
+          <p class="text-sm text-gray-500"><strong>Lieu:</strong> Hôtel Ivoire</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Contact -->
+  <section data-aos="fade-up-left" data-aos-duration="1000" data-aos-once="false" id="contact" class="py-20 bg-gray-900 text-center">
+    <h2 class="text-4xl font-bold mb-6">Contactez-nous</h2>
+    <p  data-aos="fade-up-right" data-aos-duration="1000" data-aos-once="false" class="mb-4">📞 +225 07 07 07 07 | 📧 contact@225events.ci</p>
+    <button class="mt-4 bg-yellow-500 text-black px-6 py-2 rounded-full font-bold hover:bg-yellow-400 transition">Nous écrire</button>
+  </section>
+
+  <!-- Footer -->
+  <footer  class="bg-black py-6 text-center text-gray-400">
+    &copy; 2025 225 Events. Tous droits réservés.
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    function changeVideo(url) {
+      document.getElementById('mainVideo').src = url;
+    }
+  </script>
+  <script>
+  const images = document.querySelectorAll("#bannerCarousel img");
+  let current = 0;
+  setInterval(() => {
+    images.forEach((img, i) => {
+      img.style.opacity = (i === current) ? '1' : '0';
+    });
+    current = (current + 1) % images.length;
+  }, 4000);
+</script>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('translate-x-full');
+    menu.classList.toggle('translate-x-0');
+  }
+</script>
+
+<script src="https://kit.fontawesome.com/your-fontawesome-key.js" crossorigin="anonymous"></script>
+<!-- Avant la balise </body> -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
+</body>
+</html>
